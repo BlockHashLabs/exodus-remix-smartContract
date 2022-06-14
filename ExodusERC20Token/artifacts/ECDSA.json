@@ -1,0 +1,69 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"görli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220925e3239894aef24b05060be61ede3d230149bc19b7912b60d82627f9d58716664736f6c63430007050033",
+			"opcodes": "PUSH1 0x56 PUSH1 0x23 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH1 0x0 BYTE PUSH1 0x73 EQ PUSH1 0x16 JUMPI INVALID JUMPDEST ADDRESS PUSH1 0x0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 SWAP3 0x5E ORIGIN CODECOPY DUP10 0x4A 0xEF 0x24 0xB0 POP PUSH1 0xBE PUSH2 0xEDE3 0xD2 ADDRESS EQ SWAP12 0xC1 SWAP12 PUSH26 0x12B60D82627F9D58716664736F6C634300070500330000000000 ",
+			"sourceMap": "264:8486:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220925e3239894aef24b05060be61ede3d230149bc19b7912b60d82627f9d58716664736f6c63430007050033",
+			"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 SWAP3 0x5E ORIGIN CODECOPY DUP10 0x4A 0xEF 0x24 0xB0 POP PUSH1 0xBE PUSH2 0xEDE3 0xD2 ADDRESS EQ SWAP12 0xC1 SWAP12 PUSH26 0x12B60D82627F9D58716664736F6C634300070500330000000000 ",
+			"sourceMap": "264:8486:0:-:0;;;;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "17200",
+				"executionCost": "97",
+				"totalCost": "17297"
+			},
+			"internal": {
+				"_throwError(enum ECDSA.RecoverError)": "infinite",
+				"recover(bytes32,bytes memory)": "infinite",
+				"recover(bytes32,bytes32,bytes32)": "infinite",
+				"recover(bytes32,uint8,bytes32,bytes32)": "infinite",
+				"toEthSignedMessageHash(bytes32)": "infinite",
+				"toTypedDataHash(bytes32,bytes32)": "infinite",
+				"tryRecover(bytes32,bytes memory)": "infinite",
+				"tryRecover(bytes32,bytes32,bytes32)": "infinite",
+				"tryRecover(bytes32,uint8,bytes32,bytes32)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

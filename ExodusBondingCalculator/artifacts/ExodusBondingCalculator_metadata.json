@@ -1,0 +1,218 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_EXO",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_pair",
+						"type": "address"
+					}
+				],
+				"name": "getKValue",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "k_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_pair",
+						"type": "address"
+					}
+				],
+				"name": "getTotalValue",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_pair",
+						"type": "address"
+					}
+				],
+				"name": "markdown",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_pair",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount_",
+						"type": "uint256"
+					}
+				],
+				"name": "valuation",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusBondingCalculator/StandardBondingCalculator.sol": "ExodusBondingCalculator"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusBondingCalculator/Address.sol": {
+			"keccak256": "0xc2d8595504a985f53a5db9e6220ae614a7f8b4c5c1d35f55b07e08a21e40b2b9",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1b8104a932321f4f8a89ca5265b7bca5fe9f5e51ccec01470931e5014be87fc9",
+				"dweb:/ipfs/Qmb2ta7fADrRuXqjot4reKg63brweMH6jWocx534huYtCc"
+			]
+		},
+		"ExodusBondingCalculator/FixedPoint.sol": {
+			"keccak256": "0xd0cfb115e614660af05269fa70be389fbe6c7f69e33fd34da466c0471ce95387",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1a46ca090d1cb7263e141d2c5cde7bc6e13584cf51866373c9e054549c06595a",
+				"dweb:/ipfs/QmcKLxhFkSR3WmvJsYbeamCU12hkM84dgrCJKJtYazZPBk"
+			]
+		},
+		"ExodusBondingCalculator/FullMath.sol": {
+			"keccak256": "0x4fce1c6e69dcd9e555dcacea6d1fa8966f0fbb3488730c30d51ef7e81490c2dc",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://c4d14ecfacac1b39423c4a4ec1ed7f72179312ee07323c7cdade3614336aba29",
+				"dweb:/ipfs/Qmf81MpDird8N7BSSnXhdVrut7mrMjJAMuKQ3FQy9Zoyqw"
+			]
+		},
+		"ExodusBondingCalculator/IBondingCalculator.sol": {
+			"keccak256": "0x5176ee1c1f51e3dfa75d298783c4927b5c5ff2ffb5b6e3bb99bdbf7664501461",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1781ec88e9fa7df2ab07992c23416217e5a8580155016fc1daee7acdb1727ecf",
+				"dweb:/ipfs/QmeFpk4uAuJLTtYYDXGwC8b4mmpv3JxCqrBAZrToztoEgx"
+			]
+		},
+		"ExodusBondingCalculator/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		},
+		"ExodusBondingCalculator/IERC20Metadata.sol": {
+			"keccak256": "0x9690aab5d4ff226e2618763ca0eb46853234aba1582ba0392c2cdcb2b3c7274c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://8b60dbe1980b77c76355fb44acc0365a3bf783d3a9223eee04a96da9359038ab",
+				"dweb:/ipfs/QmPMw8EZhb5VAJhNjVeTpVQK2nu26DtMtGBZdfd1oFKNML"
+			]
+		},
+		"ExodusBondingCalculator/IUniswapV2ERC20.sol": {
+			"keccak256": "0x4f478f401acdbca66defa898ac651c4cff4de9bf46a8b71e4878e44ce0142f4c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://ca2cef96f821b67243e57eb885834c722becc86f09ea67153788a8babc4db298",
+				"dweb:/ipfs/QmQJdN7NCM3WpuhdN3DMz4e2KEtzffDJpmHKs6uvW7F6Lw"
+			]
+		},
+		"ExodusBondingCalculator/IUniswapV2Pair.sol": {
+			"keccak256": "0x41c8bfb3949d62e48feb74a499cb88c7d3e4b94c7f15eabbe0afb884ded9438d",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1e2ee0449a8cbd5e0282663a23deeb6dbe47e91fd1a246776e67ece15cb105be",
+				"dweb:/ipfs/QmSwDaFmgDCSmniwsTac54XCjNyAynMrE45dj9tEZ4J4s9"
+			]
+		},
+		"ExodusBondingCalculator/SafeERC20.sol": {
+			"keccak256": "0x873d82e1f38006c425bcb544d8cca59114ca252f64457e2cc3376ef9a68f2c8e",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://de509f28376467145aff3d45a974708c22838fb21c13f036a79d55d7b389078b",
+				"dweb:/ipfs/QmTVAVLp2cgCV3MHnFv1YJbH4eYW4xtayLvpmZR5t8CGYc"
+			]
+		},
+		"ExodusBondingCalculator/SafeMath.sol": {
+			"keccak256": "0xf2edfc9cacbecb4aa48c6e5752a2d87939b450b64c18e77ad1098430d0772005",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e6a53bcf01804ba55befe28b960f5fb83d677b408a6923181987259cbd0257d9",
+				"dweb:/ipfs/QmQFd3E8cQGcHLN8uaX9cQcVsrgEikNEHCGee1iXJ1BXfd"
+			]
+		},
+		"ExodusBondingCalculator/StandardBondingCalculator.sol": {
+			"keccak256": "0x3232c5565722e7891b4bf3e5e7da719f752d5b4cb3b3ac89bed349c0bf65a71d",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://aeb5fbb2f9e6198e60e9d7770de9b3ab67f5d354f2c5152ddc1b396697f1277d",
+				"dweb:/ipfs/QmTZpg8vsM5DxApTJQTFuEa3995GuR8LpBpt2VzZpPsLt8"
+			]
+		}
+	},
+	"version": 1
+}

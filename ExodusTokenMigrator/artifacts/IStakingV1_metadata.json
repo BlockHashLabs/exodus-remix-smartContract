@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "index",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_trigger",
+						"type": "bool"
+					}
+				],
+				"name": "unstake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusTokenMigrator/IStakingV1.sol": "IStakingV1"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusTokenMigrator/IStakingV1.sol": {
+			"keccak256": "0x5b020cff8561f6f3a78db4c107412c43954d457c96483c7ca89a6c2ea82ee15b",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://f5d8732aa5f7d194a037042afe7b123b84b7fee0e4c8e87ff630c8e778199623",
+				"dweb:/ipfs/Qmcipb9tXnqTCmTVbsF4MXdM6EaAbw7uzypQoqsTCPRJ8S"
+			]
+		}
+	},
+	"version": 1
+}

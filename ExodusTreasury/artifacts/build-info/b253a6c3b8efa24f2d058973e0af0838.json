@@ -1,0 +1,2655 @@
+{
+	"id": "b253a6c3b8efa24f2d058973e0af0838",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.14",
+	"solcLongVersion": "0.8.14+commit.80d49f37",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"ExodusTreasury/OlympusAccessControlled.sol": {
+				"content": "// SPDX-License-Identifier: AGPL-3.0-only\npragma solidity >=0.7.5;\n\nimport \"./IOlympusAuthority.sol\";\n\nabstract contract ExodusAccessControlled {\n    /* ========== EVENTS ========== */\n\n    event AuthorityUpdated(IExodusAuthority indexed authority);\n\n    string UNAUTHORIZED = \"UNAUTHORIZED\"; // save gas\n\n    /* ========== STATE VARIABLES ========== */\n\n    IExodusAuthority public authority;\n\n    /* ========== Constructor ========== */\n\n    constructor(IExodusAuthority _authority) {\n        authority = _authority;\n        emit AuthorityUpdated(_authority);\n    }\n\n    /* ========== MODIFIERS ========== */\n\n    modifier onlyGovernor() {\n        require(msg.sender == authority.governor(), UNAUTHORIZED);\n        _;\n    }\n\n    modifier onlyGuardian() {\n        require(msg.sender == authority.guardian(), UNAUTHORIZED);\n        _;\n    }\n\n    modifier onlyPolicy() {\n        require(msg.sender == authority.policy(), UNAUTHORIZED);\n        _;\n    }\n\n    modifier onlyVault() {\n        require(msg.sender == authority.vault(), UNAUTHORIZED);\n        _;\n    }\n\n    /* ========== GOV ONLY ========== */\n\n    function setAuthority(IExodusAuthority _newAuthority) external onlyGovernor {\n        authority = _newAuthority;\n        emit AuthorityUpdated(_newAuthority);\n    }\n}\n"
+			},
+			"ExodusTreasury/IOlympusAuthority.sol": {
+				"content": "// SPDX-License-Identifier: AGPL-3.0\npragma solidity >=0.7.5;\n\ninterface IExodusAuthority {\n    /* ========== EVENTS ========== */\n\n    event GovernorPushed(address indexed from, address indexed to, bool _effectiveImmediately);\n    event GuardianPushed(address indexed from, address indexed to, bool _effectiveImmediately);\n    event PolicyPushed(address indexed from, address indexed to, bool _effectiveImmediately);\n    event VaultPushed(address indexed from, address indexed to, bool _effectiveImmediately);\n\n    event GovernorPulled(address indexed from, address indexed to);\n    event GuardianPulled(address indexed from, address indexed to);\n    event PolicyPulled(address indexed from, address indexed to);\n    event VaultPulled(address indexed from, address indexed to);\n\n    /* ========== VIEW ========== */\n\n    function governor() external view returns (address);\n\n    function guardian() external view returns (address);\n\n    function policy() external view returns (address);\n\n    function vault() external view returns (address);\n}\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": true,
+				"runs": 1000
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"ExodusTreasury/IOlympusAuthority.sol": {
+				"IExodusAuthority": {
+					"abi": [
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								}
+							],
+							"name": "GovernorPulled",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								},
+								{
+									"indexed": false,
+									"internalType": "bool",
+									"name": "_effectiveImmediately",
+									"type": "bool"
+								}
+							],
+							"name": "GovernorPushed",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								}
+							],
+							"name": "GuardianPulled",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								},
+								{
+									"indexed": false,
+									"internalType": "bool",
+									"name": "_effectiveImmediately",
+									"type": "bool"
+								}
+							],
+							"name": "GuardianPushed",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								}
+							],
+							"name": "PolicyPulled",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								},
+								{
+									"indexed": false,
+									"internalType": "bool",
+									"name": "_effectiveImmediately",
+									"type": "bool"
+								}
+							],
+							"name": "PolicyPushed",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								}
+							],
+							"name": "VaultPulled",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "from",
+									"type": "address"
+								},
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "to",
+									"type": "address"
+								},
+								{
+									"indexed": false,
+									"internalType": "bool",
+									"name": "_effectiveImmediately",
+									"type": "bool"
+								}
+							],
+							"name": "VaultPushed",
+							"type": "event"
+						},
+						{
+							"inputs": [],
+							"name": "governor",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "guardian",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "policy",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "vault",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"governor()": "0c340a24",
+							"guardian()": "452a9320",
+							"policy()": "0505c8c9",
+							"vault()": "fbfa77cf"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.14+commit.80d49f37\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"GovernorPulled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_effectiveImmediately\",\"type\":\"bool\"}],\"name\":\"GovernorPushed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"GuardianPulled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_effectiveImmediately\",\"type\":\"bool\"}],\"name\":\"GuardianPushed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"PolicyPulled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_effectiveImmediately\",\"type\":\"bool\"}],\"name\":\"PolicyPushed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"VaultPulled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_effectiveImmediately\",\"type\":\"bool\"}],\"name\":\"VaultPushed\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"governor\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"guardian\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"policy\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"ExodusTreasury/IOlympusAuthority.sol\":\"IExodusAuthority\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"ExodusTreasury/IOlympusAuthority.sol\":{\"keccak256\":\"0x81a1f77da7ddb3bf1defad03673098cc8d01fbb1ea29d9ef4968b205746f041c\",\"license\":\"AGPL-3.0\",\"urls\":[\"bzz-raw://2ae99a51e64ed363058e8b18c33b1f498f84d3588f71c442e427fc0021a79a04\",\"dweb:/ipfs/QmTkMMtvLKnhqEtRWCimY2r3oY5B8FpHqmG5fuhbLQKRJg\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			},
+			"ExodusTreasury/OlympusAccessControlled.sol": {
+				"ExodusAccessControlled": {
+					"abi": [
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "contract IExodusAuthority",
+									"name": "authority",
+									"type": "address"
+								}
+							],
+							"name": "AuthorityUpdated",
+							"type": "event"
+						},
+						{
+							"inputs": [],
+							"name": "authority",
+							"outputs": [
+								{
+									"internalType": "contract IExodusAuthority",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "contract IExodusAuthority",
+									"name": "_newAuthority",
+									"type": "address"
+								}
+							],
+							"name": "setAuthority",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"authority()": "bf7e214f",
+							"setAuthority(address)": "7a9e5e4b"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.14+commit.80d49f37\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract IExodusAuthority\",\"name\":\"authority\",\"type\":\"address\"}],\"name\":\"AuthorityUpdated\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"authority\",\"outputs\":[{\"internalType\":\"contract IExodusAuthority\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IExodusAuthority\",\"name\":\"_newAuthority\",\"type\":\"address\"}],\"name\":\"setAuthority\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"ExodusTreasury/OlympusAccessControlled.sol\":\"ExodusAccessControlled\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"ExodusTreasury/IOlympusAuthority.sol\":{\"keccak256\":\"0x81a1f77da7ddb3bf1defad03673098cc8d01fbb1ea29d9ef4968b205746f041c\",\"license\":\"AGPL-3.0\",\"urls\":[\"bzz-raw://2ae99a51e64ed363058e8b18c33b1f498f84d3588f71c442e427fc0021a79a04\",\"dweb:/ipfs/QmTkMMtvLKnhqEtRWCimY2r3oY5B8FpHqmG5fuhbLQKRJg\"]},\"ExodusTreasury/OlympusAccessControlled.sol\":{\"keccak256\":\"0xe08e1633d46748f33f8e4bab7cc743f5f427174aa54ad4b9066e8106aad66b69\",\"license\":\"AGPL-3.0-only\",\"urls\":[\"bzz-raw://01010d4ba59a88af6b3dd2fe46d06ce141effdf0421dfaa8dc91b8d3cc895654\",\"dweb:/ipfs/QmaPzow7X4CNeCNUd2vgwDpbnqvHxCnQV3L2kfAFu56qAX\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [
+							{
+								"astId": 89,
+								"contract": "ExodusTreasury/OlympusAccessControlled.sol:ExodusAccessControlled",
+								"label": "UNAUTHORIZED",
+								"offset": 0,
+								"slot": "0",
+								"type": "t_string_storage"
+							},
+							{
+								"astId": 92,
+								"contract": "ExodusTreasury/OlympusAccessControlled.sol:ExodusAccessControlled",
+								"label": "authority",
+								"offset": 0,
+								"slot": "1",
+								"type": "t_contract(IExodusAuthority)78"
+							}
+						],
+						"types": {
+							"t_contract(IExodusAuthority)78": {
+								"encoding": "inplace",
+								"label": "contract IExodusAuthority",
+								"numberOfBytes": "20"
+							},
+							"t_string_storage": {
+								"encoding": "bytes",
+								"label": "string",
+								"numberOfBytes": "32"
+							}
+						}
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"ExodusTreasury/IOlympusAuthority.sol": {
+				"ast": {
+					"absolutePath": "ExodusTreasury/IOlympusAuthority.sol",
+					"exportedSymbols": {
+						"IExodusAuthority": [
+							78
+						]
+					},
+					"id": 79,
+					"license": "AGPL-3.0",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								">=",
+								"0.7",
+								".5"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "37:24:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "IExodusAuthority",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 78,
+							"linearizedBaseContracts": [
+								78
+							],
+							"name": "IExodusAuthority",
+							"nameLocation": "73:16:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"anonymous": false,
+									"eventSelector": "4f337dcbb2512f18373c1f72d990a2f0a6ee5024b04007c52afd01eb73374a89",
+									"id": 9,
+									"name": "GovernorPushed",
+									"nameLocation": "142:14:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 8,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 3,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "173:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 9,
+												"src": "157:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 2,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "157:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 5,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "195:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 9,
+												"src": "179:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 4,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "179:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 7,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "_effectiveImmediately",
+												"nameLocation": "204:21:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 9,
+												"src": "199:26:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 6,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "199:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "156:70:0"
+									},
+									"src": "136:91:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "de655975891e8f09671597b37bd4d663bcc5c21dc6d7641b33cdf85fbe15d08b",
+									"id": 17,
+									"name": "GuardianPushed",
+									"nameLocation": "238:14:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 16,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 11,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "269:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "253:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 10,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "253:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 13,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "291:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "275:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 12,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "275:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 15,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "_effectiveImmediately",
+												"nameLocation": "300:21:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "295:26:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 14,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "295:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "252:70:0"
+									},
+									"src": "232:91:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "90a5902a45c24aae553d5aff384ca16d6560f08d74c9784a4fbd2796d9e13f2b",
+									"id": 25,
+									"name": "PolicyPushed",
+									"nameLocation": "334:12:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 24,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 19,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "363:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 25,
+												"src": "347:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 18,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "347:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 21,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "385:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 25,
+												"src": "369:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 20,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "369:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 23,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "_effectiveImmediately",
+												"nameLocation": "394:21:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 25,
+												"src": "389:26:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 22,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "389:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "346:70:0"
+									},
+									"src": "328:89:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "05a80f5053574d6a62733e1692e8cbcfaf927dc82df0a7267ea2e489a7cc18ff",
+									"id": 33,
+									"name": "VaultPushed",
+									"nameLocation": "428:11:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 32,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 27,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "456:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 33,
+												"src": "440:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 26,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "440:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 29,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "478:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 33,
+												"src": "462:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 28,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "462:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 31,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "_effectiveImmediately",
+												"nameLocation": "487:21:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 33,
+												"src": "482:26:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 30,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "482:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "439:70:0"
+									},
+									"src": "422:88:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "ffd6fed33fe8ec1016718bdd5d04ae6fecd9aba0da6578807daaaa7fc3d16826",
+									"id": 39,
+									"name": "GovernorPulled",
+									"nameLocation": "522:14:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 38,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 35,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "553:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 39,
+												"src": "537:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 34,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "537:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 37,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "575:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 39,
+												"src": "559:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 36,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "559:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "536:42:0"
+									},
+									"src": "516:63:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "0960fb9900fb8096216606c4f7fc2fce5d08cc0c82da55cec8619b66b5238481",
+									"id": 45,
+									"name": "GuardianPulled",
+									"nameLocation": "590:14:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 44,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 41,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "621:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 45,
+												"src": "605:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 40,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "605:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 43,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "643:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 45,
+												"src": "627:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 42,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "627:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "604:42:0"
+									},
+									"src": "584:63:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "64d2fa522b403ca222efff0c7ad07d2ef45472a45e5770918bdfa9a2845d29a8",
+									"id": 51,
+									"name": "PolicyPulled",
+									"nameLocation": "658:12:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 50,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 47,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "687:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 51,
+												"src": "671:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 46,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "671:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 49,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "709:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 51,
+												"src": "693:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 48,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "693:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "670:42:0"
+									},
+									"src": "652:61:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "3d08e01e3b8340be6ca709db7a9321448661a1f490da4d7f3eb03d84fe730953",
+									"id": 57,
+									"name": "VaultPulled",
+									"nameLocation": "724:11:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 56,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 53,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "from",
+												"nameLocation": "752:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "736:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 52,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "736:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 55,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "to",
+												"nameLocation": "774:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "758:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 54,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "758:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "735:42:0"
+									},
+									"src": "718:60:0"
+								},
+								{
+									"functionSelector": "0c340a24",
+									"id": 62,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "governor",
+									"nameLocation": "831:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 58,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "839:2:0"
+									},
+									"returnParameters": {
+										"id": 61,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 60,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 62,
+												"src": "865:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 59,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "865:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "864:9:0"
+									},
+									"scope": 78,
+									"src": "822:52:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "452a9320",
+									"id": 67,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "guardian",
+									"nameLocation": "889:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 63,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "897:2:0"
+									},
+									"returnParameters": {
+										"id": 66,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 65,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 67,
+												"src": "923:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 64,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "923:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "922:9:0"
+									},
+									"scope": 78,
+									"src": "880:52:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "0505c8c9",
+									"id": 72,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "policy",
+									"nameLocation": "947:6:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 68,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "953:2:0"
+									},
+									"returnParameters": {
+										"id": 71,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 70,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 72,
+												"src": "979:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 69,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "979:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "978:9:0"
+									},
+									"scope": 78,
+									"src": "938:50:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "fbfa77cf",
+									"id": 77,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "vault",
+									"nameLocation": "1003:5:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 73,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1008:2:0"
+									},
+									"returnParameters": {
+										"id": 76,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 75,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 77,
+												"src": "1034:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 74,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1034:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1033:9:0"
+									},
+									"scope": 78,
+									"src": "994:49:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 79,
+							"src": "63:982:0",
+							"usedErrors": []
+						}
+					],
+					"src": "37:1009:0"
+				},
+				"id": 0
+			},
+			"ExodusTreasury/OlympusAccessControlled.sol": {
+				"ast": {
+					"absolutePath": "ExodusTreasury/OlympusAccessControlled.sol",
+					"exportedSymbols": {
+						"ExodusAccessControlled": [
+							181
+						],
+						"IExodusAuthority": [
+							78
+						]
+					},
+					"id": 182,
+					"license": "AGPL-3.0-only",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 80,
+							"literals": [
+								"solidity",
+								">=",
+								"0.7",
+								".5"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "42:24:1"
+						},
+						{
+							"absolutePath": "ExodusTreasury/IOlympusAuthority.sol",
+							"file": "./IOlympusAuthority.sol",
+							"id": 81,
+							"nameLocation": "-1:-1:-1",
+							"nodeType": "ImportDirective",
+							"scope": 182,
+							"sourceUnit": 79,
+							"src": "68:33:1",
+							"symbolAliases": [],
+							"unitAlias": ""
+						},
+						{
+							"abstract": true,
+							"baseContracts": [],
+							"canonicalName": "ExodusAccessControlled",
+							"contractDependencies": [],
+							"contractKind": "contract",
+							"fullyImplemented": true,
+							"id": 181,
+							"linearizedBaseContracts": [
+								181
+							],
+							"name": "ExodusAccessControlled",
+							"nameLocation": "121:22:1",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"anonymous": false,
+									"eventSelector": "2f658b440c35314f52658ea8a740e05b284cdc84dc9ae01e891f21b8933e7cad",
+									"id": 86,
+									"name": "AuthorityUpdated",
+									"nameLocation": "196:16:1",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 85,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 84,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "authority",
+												"nameLocation": "238:9:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 86,
+												"src": "213:34:1",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+													"typeString": "contract IExodusAuthority"
+												},
+												"typeName": {
+													"id": 83,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 82,
+														"name": "IExodusAuthority",
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 78,
+														"src": "213:16:1"
+													},
+													"referencedDeclaration": 78,
+													"src": "213:16:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+														"typeString": "contract IExodusAuthority"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "212:36:1"
+									},
+									"src": "190:59:1"
+								},
+								{
+									"constant": false,
+									"id": 89,
+									"mutability": "mutable",
+									"name": "UNAUTHORIZED",
+									"nameLocation": "262:12:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 181,
+									"src": "255:36:1",
+									"stateVariable": true,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 87,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "255:6:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"value": {
+										"hexValue": "554e415554484f52495a4544",
+										"id": 88,
+										"isConstant": false,
+										"isLValue": false,
+										"isPure": true,
+										"kind": "string",
+										"lValueRequested": false,
+										"nodeType": "Literal",
+										"src": "277:14:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_stringliteral_269df367cd41cace5897a935d0e0858fe4543b5619d45e09af6b124c1bb3d528",
+											"typeString": "literal_string \"UNAUTHORIZED\""
+										},
+										"value": "UNAUTHORIZED"
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"functionSelector": "bf7e214f",
+									"id": 92,
+									"mutability": "mutable",
+									"name": "authority",
+									"nameLocation": "383:9:1",
+									"nodeType": "VariableDeclaration",
+									"scope": 181,
+									"src": "359:33:1",
+									"stateVariable": true,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+										"typeString": "contract IExodusAuthority"
+									},
+									"typeName": {
+										"id": 91,
+										"nodeType": "UserDefinedTypeName",
+										"pathNode": {
+											"id": 90,
+											"name": "IExodusAuthority",
+											"nodeType": "IdentifierPath",
+											"referencedDeclaration": 78,
+											"src": "359:16:1"
+										},
+										"referencedDeclaration": 78,
+										"src": "359:16:1",
+										"typeDescriptions": {
+											"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+											"typeString": "contract IExodusAuthority"
+										}
+									},
+									"visibility": "public"
+								},
+								{
+									"body": {
+										"id": 106,
+										"nodeType": "Block",
+										"src": "485:82:1",
+										"statements": [
+											{
+												"expression": {
+													"id": 100,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftHandSide": {
+														"id": 98,
+														"name": "authority",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 92,
+														"src": "495:9:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+															"typeString": "contract IExodusAuthority"
+														}
+													},
+													"nodeType": "Assignment",
+													"operator": "=",
+													"rightHandSide": {
+														"id": 99,
+														"name": "_authority",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 95,
+														"src": "507:10:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+															"typeString": "contract IExodusAuthority"
+														}
+													},
+													"src": "495:22:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+														"typeString": "contract IExodusAuthority"
+													}
+												},
+												"id": 101,
+												"nodeType": "ExpressionStatement",
+												"src": "495:22:1"
+											},
+											{
+												"eventCall": {
+													"arguments": [
+														{
+															"id": 103,
+															"name": "_authority",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 95,
+															"src": "549:10:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																"typeString": "contract IExodusAuthority"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																"typeString": "contract IExodusAuthority"
+															}
+														],
+														"id": 102,
+														"name": "AuthorityUpdated",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 86,
+														"src": "532:16:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_event_nonpayable$_t_contract$_IExodusAuthority_$78_$returns$__$",
+															"typeString": "function (contract IExodusAuthority)"
+														}
+													},
+													"id": 104,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "532:28:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 105,
+												"nodeType": "EmitStatement",
+												"src": "527:33:1"
+											}
+										]
+									},
+									"id": 107,
+									"implemented": true,
+									"kind": "constructor",
+									"modifiers": [],
+									"name": "",
+									"nameLocation": "-1:-1:-1",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 96,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 95,
+												"mutability": "mutable",
+												"name": "_authority",
+												"nameLocation": "473:10:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 107,
+												"src": "456:27:1",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+													"typeString": "contract IExodusAuthority"
+												},
+												"typeName": {
+													"id": 94,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 93,
+														"name": "IExodusAuthority",
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 78,
+														"src": "456:16:1"
+													},
+													"referencedDeclaration": 78,
+													"src": "456:16:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+														"typeString": "contract IExodusAuthority"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "455:29:1"
+									},
+									"returnParameters": {
+										"id": 97,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "485:0:1"
+									},
+									"scope": 181,
+									"src": "444:123:1",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 120,
+										"nodeType": "Block",
+										"src": "640:85:1",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_address",
+																"typeString": "address"
+															},
+															"id": 115,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"expression": {
+																	"id": 110,
+																	"name": "msg",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967281,
+																	"src": "658:3:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_magic_message",
+																		"typeString": "msg"
+																	}
+																},
+																"id": 111,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberName": "sender",
+																"nodeType": "MemberAccess",
+																"src": "658:10:1",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "==",
+															"rightExpression": {
+																"arguments": [],
+																"expression": {
+																	"argumentTypes": [],
+																	"expression": {
+																		"id": 112,
+																		"name": "authority",
+																		"nodeType": "Identifier",
+																		"overloadedDeclarations": [],
+																		"referencedDeclaration": 92,
+																		"src": "672:9:1",
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																			"typeString": "contract IExodusAuthority"
+																		}
+																	},
+																	"id": 113,
+																	"isConstant": false,
+																	"isLValue": false,
+																	"isPure": false,
+																	"lValueRequested": false,
+																	"memberName": "governor",
+																	"nodeType": "MemberAccess",
+																	"referencedDeclaration": 62,
+																	"src": "672:18:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+																		"typeString": "function () view external returns (address)"
+																	}
+																},
+																"id": 114,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "672:20:1",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"src": "658:34:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"id": 116,
+															"name": "UNAUTHORIZED",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 89,
+															"src": "694:12:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														],
+														"id": 109,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "650:7:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 117,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "650:57:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 118,
+												"nodeType": "ExpressionStatement",
+												"src": "650:57:1"
+											},
+											{
+												"id": 119,
+												"nodeType": "PlaceholderStatement",
+												"src": "717:1:1"
+											}
+										]
+									},
+									"id": 121,
+									"name": "onlyGovernor",
+									"nameLocation": "625:12:1",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 108,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "637:2:1"
+									},
+									"src": "616:109:1",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 134,
+										"nodeType": "Block",
+										"src": "755:85:1",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_address",
+																"typeString": "address"
+															},
+															"id": 129,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"expression": {
+																	"id": 124,
+																	"name": "msg",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967281,
+																	"src": "773:3:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_magic_message",
+																		"typeString": "msg"
+																	}
+																},
+																"id": 125,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberName": "sender",
+																"nodeType": "MemberAccess",
+																"src": "773:10:1",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "==",
+															"rightExpression": {
+																"arguments": [],
+																"expression": {
+																	"argumentTypes": [],
+																	"expression": {
+																		"id": 126,
+																		"name": "authority",
+																		"nodeType": "Identifier",
+																		"overloadedDeclarations": [],
+																		"referencedDeclaration": 92,
+																		"src": "787:9:1",
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																			"typeString": "contract IExodusAuthority"
+																		}
+																	},
+																	"id": 127,
+																	"isConstant": false,
+																	"isLValue": false,
+																	"isPure": false,
+																	"lValueRequested": false,
+																	"memberName": "guardian",
+																	"nodeType": "MemberAccess",
+																	"referencedDeclaration": 67,
+																	"src": "787:18:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+																		"typeString": "function () view external returns (address)"
+																	}
+																},
+																"id": 128,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "787:20:1",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"src": "773:34:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"id": 130,
+															"name": "UNAUTHORIZED",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 89,
+															"src": "809:12:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														],
+														"id": 123,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "765:7:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 131,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "765:57:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 132,
+												"nodeType": "ExpressionStatement",
+												"src": "765:57:1"
+											},
+											{
+												"id": 133,
+												"nodeType": "PlaceholderStatement",
+												"src": "832:1:1"
+											}
+										]
+									},
+									"id": 135,
+									"name": "onlyGuardian",
+									"nameLocation": "740:12:1",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 122,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "752:2:1"
+									},
+									"src": "731:109:1",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 148,
+										"nodeType": "Block",
+										"src": "868:83:1",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_address",
+																"typeString": "address"
+															},
+															"id": 143,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"expression": {
+																	"id": 138,
+																	"name": "msg",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967281,
+																	"src": "886:3:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_magic_message",
+																		"typeString": "msg"
+																	}
+																},
+																"id": 139,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberName": "sender",
+																"nodeType": "MemberAccess",
+																"src": "886:10:1",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "==",
+															"rightExpression": {
+																"arguments": [],
+																"expression": {
+																	"argumentTypes": [],
+																	"expression": {
+																		"id": 140,
+																		"name": "authority",
+																		"nodeType": "Identifier",
+																		"overloadedDeclarations": [],
+																		"referencedDeclaration": 92,
+																		"src": "900:9:1",
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																			"typeString": "contract IExodusAuthority"
+																		}
+																	},
+																	"id": 141,
+																	"isConstant": false,
+																	"isLValue": false,
+																	"isPure": false,
+																	"lValueRequested": false,
+																	"memberName": "policy",
+																	"nodeType": "MemberAccess",
+																	"referencedDeclaration": 72,
+																	"src": "900:16:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+																		"typeString": "function () view external returns (address)"
+																	}
+																},
+																"id": 142,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "900:18:1",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"src": "886:32:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"id": 144,
+															"name": "UNAUTHORIZED",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 89,
+															"src": "920:12:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														],
+														"id": 137,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "878:7:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 145,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "878:55:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 146,
+												"nodeType": "ExpressionStatement",
+												"src": "878:55:1"
+											},
+											{
+												"id": 147,
+												"nodeType": "PlaceholderStatement",
+												"src": "943:1:1"
+											}
+										]
+									},
+									"id": 149,
+									"name": "onlyPolicy",
+									"nameLocation": "855:10:1",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 136,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "865:2:1"
+									},
+									"src": "846:105:1",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 162,
+										"nodeType": "Block",
+										"src": "978:82:1",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_address",
+																"typeString": "address"
+															},
+															"id": 157,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"expression": {
+																	"id": 152,
+																	"name": "msg",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967281,
+																	"src": "996:3:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_magic_message",
+																		"typeString": "msg"
+																	}
+																},
+																"id": 153,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberName": "sender",
+																"nodeType": "MemberAccess",
+																"src": "996:10:1",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "==",
+															"rightExpression": {
+																"arguments": [],
+																"expression": {
+																	"argumentTypes": [],
+																	"expression": {
+																		"id": 154,
+																		"name": "authority",
+																		"nodeType": "Identifier",
+																		"overloadedDeclarations": [],
+																		"referencedDeclaration": 92,
+																		"src": "1010:9:1",
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																			"typeString": "contract IExodusAuthority"
+																		}
+																	},
+																	"id": 155,
+																	"isConstant": false,
+																	"isLValue": false,
+																	"isPure": false,
+																	"lValueRequested": false,
+																	"memberName": "vault",
+																	"nodeType": "MemberAccess",
+																	"referencedDeclaration": 77,
+																	"src": "1010:15:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+																		"typeString": "function () view external returns (address)"
+																	}
+																},
+																"id": 156,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "1010:17:1",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"src": "996:31:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"id": 158,
+															"name": "UNAUTHORIZED",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 89,
+															"src": "1029:12:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_string_storage",
+																"typeString": "string storage ref"
+															}
+														],
+														"id": 151,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "988:7:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 159,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "988:54:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 160,
+												"nodeType": "ExpressionStatement",
+												"src": "988:54:1"
+											},
+											{
+												"id": 161,
+												"nodeType": "PlaceholderStatement",
+												"src": "1052:1:1"
+											}
+										]
+									},
+									"id": 163,
+									"name": "onlyVault",
+									"nameLocation": "966:9:1",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 150,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "975:2:1"
+									},
+									"src": "957:103:1",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 179,
+										"nodeType": "Block",
+										"src": "1184:88:1",
+										"statements": [
+											{
+												"expression": {
+													"id": 173,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftHandSide": {
+														"id": 171,
+														"name": "authority",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 92,
+														"src": "1194:9:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+															"typeString": "contract IExodusAuthority"
+														}
+													},
+													"nodeType": "Assignment",
+													"operator": "=",
+													"rightHandSide": {
+														"id": 172,
+														"name": "_newAuthority",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 166,
+														"src": "1206:13:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+															"typeString": "contract IExodusAuthority"
+														}
+													},
+													"src": "1194:25:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+														"typeString": "contract IExodusAuthority"
+													}
+												},
+												"id": 174,
+												"nodeType": "ExpressionStatement",
+												"src": "1194:25:1"
+											},
+											{
+												"eventCall": {
+													"arguments": [
+														{
+															"id": 176,
+															"name": "_newAuthority",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 166,
+															"src": "1251:13:1",
+															"typeDescriptions": {
+																"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																"typeString": "contract IExodusAuthority"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+																"typeString": "contract IExodusAuthority"
+															}
+														],
+														"id": 175,
+														"name": "AuthorityUpdated",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 86,
+														"src": "1234:16:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_event_nonpayable$_t_contract$_IExodusAuthority_$78_$returns$__$",
+															"typeString": "function (contract IExodusAuthority)"
+														}
+													},
+													"id": 177,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "1234:31:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 178,
+												"nodeType": "EmitStatement",
+												"src": "1229:36:1"
+											}
+										]
+									},
+									"functionSelector": "7a9e5e4b",
+									"id": 180,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [
+										{
+											"id": 169,
+											"kind": "modifierInvocation",
+											"modifierName": {
+												"id": 168,
+												"name": "onlyGovernor",
+												"nodeType": "IdentifierPath",
+												"referencedDeclaration": 121,
+												"src": "1171:12:1"
+											},
+											"nodeType": "ModifierInvocation",
+											"src": "1171:12:1"
+										}
+									],
+									"name": "setAuthority",
+									"nameLocation": "1117:12:1",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 167,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 166,
+												"mutability": "mutable",
+												"name": "_newAuthority",
+												"nameLocation": "1147:13:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 180,
+												"src": "1130:30:1",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+													"typeString": "contract IExodusAuthority"
+												},
+												"typeName": {
+													"id": 165,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 164,
+														"name": "IExodusAuthority",
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 78,
+														"src": "1130:16:1"
+													},
+													"referencedDeclaration": 78,
+													"src": "1130:16:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_contract$_IExodusAuthority_$78",
+														"typeString": "contract IExodusAuthority"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1129:32:1"
+									},
+									"returnParameters": {
+										"id": 170,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1184:0:1"
+									},
+									"scope": 181,
+									"src": "1108:164:1",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 182,
+							"src": "103:1171:1",
+							"usedErrors": []
+						}
+					],
+					"src": "42:1233:1"
+				},
+				"id": 1
+			}
+		}
+	}
+}

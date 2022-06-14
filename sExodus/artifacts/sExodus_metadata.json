@@ -1,0 +1,871 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rebase",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "LogRebase",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "stakingContract",
+						"type": "address"
+					}
+				],
+				"name": "LogStakingContractUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalSupply",
+						"type": "uint256"
+					}
+				],
+				"name": "LogSupply",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DOMAIN_SEPARATOR",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner_",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "gons",
+						"type": "uint256"
+					}
+				],
+				"name": "balanceForGons",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "who",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "debtor",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "add",
+						"type": "bool"
+					}
+				],
+				"name": "changeDebt",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "circulatingSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "debtBalances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "subtractedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "decreaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "fromG",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "gEXO",
+				"outputs": [
+					{
+						"internalType": "contract IgEXO",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "gonsForBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "addedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "increaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "index",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_stakingContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_treasury",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "nonces",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "v",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "r",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "s",
+						"type": "bytes32"
+					}
+				],
+				"name": "permit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "profit_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "epoch_",
+						"type": "uint256"
+					}
+				],
+				"name": "rebase",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "rebases",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "epoch",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rebase",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalStakedBefore",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalStakedAfter",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountRebased",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "blockNumberOccured",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "setIndex",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gEXO",
+						"type": "address"
+					}
+				],
+				"name": "setgOHM",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stakingContract",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "toG",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "treasury",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"DOMAIN_SEPARATOR()": {
+					"details": "See {IERC20Permit-DOMAIN_SEPARATOR}."
+				},
+				"nonces(address)": {
+					"details": "See {IERC20Permit-nonces}."
+				},
+				"permit(address,address,uint256,uint256,uint8,bytes32,bytes32)": {
+					"details": "See {IERC20Permit-permit}."
+				},
+				"rebase(uint256,uint256)": {
+					"params": {
+						"profit_": "uint256"
+					},
+					"returns": {
+						"_0": "uint256"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"rebase(uint256,uint256)": {
+					"notice": "increases rOHM supply to increase staking balances relative to profit_"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"sExodus/sOlympusERC20.sol": "sExodus"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"sExodus/Address.sol": {
+			"keccak256": "0xc2d8595504a985f53a5db9e6220ae614a7f8b4c5c1d35f55b07e08a21e40b2b9",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1b8104a932321f4f8a89ca5265b7bca5fe9f5e51ccec01470931e5014be87fc9",
+				"dweb:/ipfs/Qmb2ta7fADrRuXqjot4reKg63brweMH6jWocx534huYtCc"
+			]
+		},
+		"sExodus/Counters.sol": {
+			"keccak256": "0x2723e1522fb9088bb9ee8d3f20e9f3b04bc38daf127ef1dc624e61a88cbf48de",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://b52e187f74d2be83d893b2b47f866878504b14ba04834cb5e3d06219c5ab5673",
+				"dweb:/ipfs/QmcYVMhAunHXNU55TGZGkSKATbDCNTgs42u4q5At8NN4Ce"
+			]
+		},
+		"sExodus/ECDSA.sol": {
+			"keccak256": "0x2fb4959d42d1a72b47f3c3c8db1e466d21dbfb33aa445fd6a8c1f1e84ba37cdf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://10b87bfd64543429c28797a71b78149d9cb93261fc60bdfee25c56c6af886866",
+				"dweb:/ipfs/QmVRvnZSbAgSSR8PfZnKSkLFPqqUkxJeS919FvszosQzsV"
+			]
+		},
+		"sExodus/EIP712.sol": {
+			"keccak256": "0x76bfc700bb36030b1e9c73abc9b024eea9632c4538f0eedca7f15ae062b4581c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8f5a92ca1f712919f5da7f70fabfa55626f772f6e455510a49b2b55ec0632315",
+				"dweb:/ipfs/Qme3YZHzQgeAZ7m8tB9zWdRLopRqNsBppKVj9cpKuAaLBE"
+			]
+		},
+		"sExodus/ERC20.sol": {
+			"keccak256": "0x69e61a22f9d3311cf65421c12af4fd9f22797c0919c71a8c4e3210d4ef1e0978",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://3429dd0834aad2edcce7b0d3e0cf4d10b038034da2b62264f26f508fbde7887c",
+				"dweb:/ipfs/QmeACvafiAej3T3CBTaBH8hTSru6pbHdKZU8anMfhGNRqu"
+			]
+		},
+		"sExodus/ERC20Permit.sol": {
+			"keccak256": "0x652e9ebde967277c422d494f1696e735864ea171b04f210f1a9356553b800d27",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://04c501477f99535423eeb0617e706d78fa9fd5b50d4cdec4f069a922f1bc4e26",
+				"dweb:/ipfs/QmTKQShGC5NYbYfENQ1pKqedGmMdiBXm86SVdykrKwTXF1"
+			]
+		},
+		"sExodus/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		},
+		"sExodus/IERC20Permit.sol": {
+			"keccak256": "0x681e969fed243296a88805a5c99bc934b6149f0310ce7761a9cbd988f2cc139a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c274384e15d6fe8eeb1eb4a8468162ca96d7135e0714f9ac050883e9dfebb58d",
+				"dweb:/ipfs/QmXmafvMmYq6xvWwvKwXSHdmpjYDwYd1CqBjLhRi1qSPxj"
+			]
+		},
+		"sExodus/IStaking.sol": {
+			"keccak256": "0xc5481248b924479a867d252882a1be9573e4aefe3c7816045e1c0c25daacca70",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://5a0bf214509dcb8f0f9566918c2038e50e5bd9286a19a914f1ed6fbf2de22b1d",
+				"dweb:/ipfs/QmTacgzN9NcR1oHwyWdFV8Kazfzoj8dCaNLVVftt35KnNU"
+			]
+		},
+		"sExodus/IgOHM.sol": {
+			"keccak256": "0x6cac4e5000a7bf84a9fb175f38a3a85fdedf2401cca7c0f0d95e9f88c8929e0d",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e313687e3a347191cbb05812b8bf6832ee47019912f066d3e5c68a7b9fc8ea3f",
+				"dweb:/ipfs/QmX2si86fKKkP96jmWCc3D2qbLUiT5mN9mw5nL68CUcHwW"
+			]
+		},
+		"sExodus/IsOHM.sol": {
+			"keccak256": "0xe6853333a2d813d8ff0afce244cb92d4e1742a26ae2955d1d2cca221bfd4e675",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://9a3dd7d8b7d6421a74b3794e80174f7ee486c1391013c7a557859f75e30229d2",
+				"dweb:/ipfs/QmeyMJhtEkL85vGk1e9BRd2AXmfq6Kivm4nTi1NeDTkoDr"
+			]
+		},
+		"sExodus/SafeMath.sol": {
+			"keccak256": "0xf2edfc9cacbecb4aa48c6e5752a2d87939b450b64c18e77ad1098430d0772005",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e6a53bcf01804ba55befe28b960f5fb83d677b408a6923181987259cbd0257d9",
+				"dweb:/ipfs/QmQFd3E8cQGcHLN8uaX9cQcVsrgEikNEHCGee1iXJ1BXfd"
+			]
+		},
+		"sExodus/sOlympusERC20.sol": {
+			"keccak256": "0xc3d6aff0cfb460472f030f57f16db550260937adbc58eca32b5bda57d9d1a59c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://276b12089ac1f442bb128e47d591239df7ad425f4e408a058b5d494e4c8f7cef",
+				"dweb:/ipfs/QmYe1KUro3MDCjKWsC7ksda3ViZou3fFwdtCJ8DCxxfYzN"
+			]
+		}
+	},
+	"version": 1
+}

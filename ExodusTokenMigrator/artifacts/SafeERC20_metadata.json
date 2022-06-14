@@ -1,0 +1,55 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"author": "Modified from Uniswap (https://github.com/Uniswap/uniswap-v3-periphery/blob/main/contracts/libraries/TransferHelper.sol) Taken from Solmate",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Safe IERC20 and ETH transfer library that safely handles missing return values.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusTokenMigrator/SafeERC20.sol": "SafeERC20"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusTokenMigrator/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		},
+		"ExodusTokenMigrator/SafeERC20.sol": {
+			"keccak256": "0x873d82e1f38006c425bcb544d8cca59114ca252f64457e2cc3376ef9a68f2c8e",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://de509f28376467145aff3d45a974708c22838fb21c13f036a79d55d7b389078b",
+				"dweb:/ipfs/QmTVAVLp2cgCV3MHnFv1YJbH4eYW4xtayLvpmZR5t8CGYc"
+			]
+		}
+	},
+	"version": 1
+}

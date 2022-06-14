@@ -1,0 +1,72 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					}
+				],
+				"name": "stake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"daibond/BondDepository.sol": "IStakingHelper"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"daibond/BondDepository.sol": {
+			"keccak256": "0x12bd20dd98a5e3c1c3bb5b587c68bf3e2f4005cac4a4265aec6e6ec0fb167527",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://2010d6a7a3e51d7707dcebfc9fe4ac8e9a29638ebb288416a3c235f105ba0188",
+				"dweb:/ipfs/QmXWkVU3cD3rNbtyDfvmFXq2EXfo7JKBGrLt3WzYd3Uxj8"
+			]
+		},
+		"daibond/ITreasury.sol": {
+			"keccak256": "0xe211e5efbbf1dc57ff63f1217f97a8fe0188333f2b4d15204e95ad885334373c",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://459661ef94605dcda52af05c18beb5543044fd6ec589ff85cd1d8124bfc76e2f",
+				"dweb:/ipfs/Qmauo3czbPWty97km7G93jsqdyW7gSCRxGK4s7a36LzTRB"
+			]
+		}
+	},
+	"version": 1
+}

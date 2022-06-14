@@ -1,0 +1,132 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipPulled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipPushed",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pullManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner_",
+						"type": "address"
+					}
+				],
+				"name": "pushManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExoFaucet/Ownable.sol": "Ownable"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExoFaucet/IOwnable.sol": {
+			"keccak256": "0x29d92f94f4517d948d3a314e89008ae96e189cc21d410d477ddfe3766e5d665a",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://939c2fa81ad0f94c4c76754676f1db4340f1f1cba50cd20dbbb5a71be8945f65",
+				"dweb:/ipfs/QmQzo16egRWr1BGdPh9AML4G2q1qG57vK4ChMcddDbm1r5"
+			]
+		},
+		"ExoFaucet/Ownable.sol": {
+			"keccak256": "0xb420421cf6e2ca598529c6ed1f1bad4cdbc7c95b43291c66e79b0bff4bef4447",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://6a25dbd464342457178145a32cb652c34e22e65ebefe61edfc762e34f0995e10",
+				"dweb:/ipfs/QmP9PUF6sbDpjRbhGHzwdx4N35DpjNDWJGjbk4J3yaZsvn"
+			]
+		}
+	},
+	"version": 1
+}

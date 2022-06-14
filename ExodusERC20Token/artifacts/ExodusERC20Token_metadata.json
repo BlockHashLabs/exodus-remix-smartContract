@@ -1,0 +1,588 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_authority",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "contract IExodusAuthority",
+						"name": "authority",
+						"type": "address"
+					}
+				],
+				"name": "AuthorityUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DOMAIN_SEPARATOR",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "authority",
+				"outputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account_",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount_",
+						"type": "uint256"
+					}
+				],
+				"name": "burnFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "subtractedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "decreaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "addedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "increaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account_",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount_",
+						"type": "uint256"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "nonces",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "v",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "r",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "s",
+						"type": "bytes32"
+					}
+				],
+				"name": "permit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "_newAuthority",
+						"type": "address"
+					}
+				],
+				"name": "setAuthority",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"DOMAIN_SEPARATOR()": {
+					"details": "See {IERC20Permit-DOMAIN_SEPARATOR}."
+				},
+				"nonces(address)": {
+					"details": "See {IERC20Permit-nonces}."
+				},
+				"permit(address,address,uint256,uint256,uint8,bytes32,bytes32)": {
+					"details": "See {IERC20Permit-permit}."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusERC20Token/OlympusERC20.sol": "ExodusERC20Token"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusERC20Token/Counters.sol": {
+			"keccak256": "0x2723e1522fb9088bb9ee8d3f20e9f3b04bc38daf127ef1dc624e61a88cbf48de",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://b52e187f74d2be83d893b2b47f866878504b14ba04834cb5e3d06219c5ab5673",
+				"dweb:/ipfs/QmcYVMhAunHXNU55TGZGkSKATbDCNTgs42u4q5At8NN4Ce"
+			]
+		},
+		"ExodusERC20Token/ECDSA.sol": {
+			"keccak256": "0x2fb4959d42d1a72b47f3c3c8db1e466d21dbfb33aa445fd6a8c1f1e84ba37cdf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://10b87bfd64543429c28797a71b78149d9cb93261fc60bdfee25c56c6af886866",
+				"dweb:/ipfs/QmVRvnZSbAgSSR8PfZnKSkLFPqqUkxJeS919FvszosQzsV"
+			]
+		},
+		"ExodusERC20Token/EIP712.sol": {
+			"keccak256": "0x76bfc700bb36030b1e9c73abc9b024eea9632c4538f0eedca7f15ae062b4581c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8f5a92ca1f712919f5da7f70fabfa55626f772f6e455510a49b2b55ec0632315",
+				"dweb:/ipfs/Qme3YZHzQgeAZ7m8tB9zWdRLopRqNsBppKVj9cpKuAaLBE"
+			]
+		},
+		"ExodusERC20Token/ERC20.sol": {
+			"keccak256": "0x69e61a22f9d3311cf65421c12af4fd9f22797c0919c71a8c4e3210d4ef1e0978",
+			"license": "AGPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://3429dd0834aad2edcce7b0d3e0cf4d10b038034da2b62264f26f508fbde7887c",
+				"dweb:/ipfs/QmeACvafiAej3T3CBTaBH8hTSru6pbHdKZU8anMfhGNRqu"
+			]
+		},
+		"ExodusERC20Token/ERC20Permit.sol": {
+			"keccak256": "0x652e9ebde967277c422d494f1696e735864ea171b04f210f1a9356553b800d27",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://04c501477f99535423eeb0617e706d78fa9fd5b50d4cdec4f069a922f1bc4e26",
+				"dweb:/ipfs/QmTKQShGC5NYbYfENQ1pKqedGmMdiBXm86SVdykrKwTXF1"
+			]
+		},
+		"ExodusERC20Token/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		},
+		"ExodusERC20Token/IERC20Permit.sol": {
+			"keccak256": "0x681e969fed243296a88805a5c99bc934b6149f0310ce7761a9cbd988f2cc139a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c274384e15d6fe8eeb1eb4a8468162ca96d7135e0714f9ac050883e9dfebb58d",
+				"dweb:/ipfs/QmXmafvMmYq6xvWwvKwXSHdmpjYDwYd1CqBjLhRi1qSPxj"
+			]
+		},
+		"ExodusERC20Token/IOHM.sol": {
+			"keccak256": "0x72e5b4ed781e0eed921534e2a4e3f3460ac25367d68e09c00d59117ecbe1e5af",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://7b416f043fd9a0a8a2b52e3f44730726270e6469a82d68203bb4fad1475a7205",
+				"dweb:/ipfs/QmcH7F68HfLqK6PT6b3JHYRizJ3V4YbuV8MuXTLTPrSid2"
+			]
+		},
+		"ExodusERC20Token/IOlympusAuthority.sol": {
+			"keccak256": "0x81a1f77da7ddb3bf1defad03673098cc8d01fbb1ea29d9ef4968b205746f041c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://2ae99a51e64ed363058e8b18c33b1f498f84d3588f71c442e427fc0021a79a04",
+				"dweb:/ipfs/QmTkMMtvLKnhqEtRWCimY2r3oY5B8FpHqmG5fuhbLQKRJg"
+			]
+		},
+		"ExodusERC20Token/OlympusAccessControlled.sol": {
+			"keccak256": "0xe08e1633d46748f33f8e4bab7cc743f5f427174aa54ad4b9066e8106aad66b69",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://01010d4ba59a88af6b3dd2fe46d06ce141effdf0421dfaa8dc91b8d3cc895654",
+				"dweb:/ipfs/QmaPzow7X4CNeCNUd2vgwDpbnqvHxCnQV3L2kfAFu56qAX"
+			]
+		},
+		"ExodusERC20Token/OlympusERC20.sol": {
+			"keccak256": "0x7bd6ded2925490e85f55d2bc43c9459c7a5e709ec2c120d596e21482ca54fc26",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://5efbfb7c678b68d1208c0d27965c793619626ddf3d58ee1c4dcff5c9a5a4b353",
+				"dweb:/ipfs/Qmagtsg85YrMEiaxxBZ4jiQUVb9zUgBYGARUyjM45oK43g"
+			]
+		},
+		"ExodusERC20Token/SafeMath.sol": {
+			"keccak256": "0xf2edfc9cacbecb4aa48c6e5752a2d87939b450b64c18e77ad1098430d0772005",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e6a53bcf01804ba55befe28b960f5fb83d677b408a6923181987259cbd0257d9",
+				"dweb:/ipfs/QmQFd3E8cQGcHLN8uaX9cQcVsrgEikNEHCGee1iXJ1BXfd"
+			]
+		}
+	},
+	"version": 1
+}

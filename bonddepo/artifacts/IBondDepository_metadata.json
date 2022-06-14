@@ -1,0 +1,325 @@
+{
+	"compiler": {
+		"version": "0.8.14+commit.80d49f37"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "close",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_quoteToken",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[3]",
+						"name": "_market",
+						"type": "uint256[3]"
+					},
+					{
+						"internalType": "bool[2]",
+						"name": "_booleans",
+						"type": "bool[2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "_terms",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint32[2]",
+						"name": "_intervals",
+						"type": "uint32[2]"
+					}
+				],
+				"name": "create",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bid",
+						"type": "uint256"
+					}
+				],
+				"name": "currentDebt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bid",
+						"type": "uint256"
+					}
+				],
+				"name": "debtDecay",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bid",
+						"type": "uint256"
+					}
+				],
+				"name": "debtRatio",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_maxPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_referral",
+						"type": "address"
+					}
+				],
+				"name": "deposit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "payout_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expiry_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bid",
+						"type": "uint256"
+					}
+				],
+				"name": "isLive",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "liveMarkets",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_quoteToken",
+						"type": "address"
+					}
+				],
+				"name": "liveMarketsFor",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bid",
+						"type": "uint256"
+					}
+				],
+				"name": "marketPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_bid",
+						"type": "uint256"
+					}
+				],
+				"name": "payoutFor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"deposit(uint256,uint256,uint256,address,address)": {
+					"params": {
+						"_amount": "uint256",
+						"_bid": "uint256",
+						"_maxPrice": "uint256",
+						"_referral": "address",
+						"_user": "address"
+					},
+					"returns": {
+						"expiry_": "uint256",
+						"index_": "uint256",
+						"payout_": "uint256"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"deposit(uint256,uint256,uint256,address,address)": {
+					"notice": "deposit market"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bonddepo/IBondDepository.sol": "IBondDepository"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bonddepo/IBondDepository.sol": {
+			"keccak256": "0x0ac2362eaba961bb56ce865a7c085b05efd75ed58c687b5a78a7bdeef00aedf7",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://d75c4c1bd49060507d8691a048599da3e23cb8b4ff24f32a4fdebf63f2bf6773",
+				"dweb:/ipfs/QmPE1hxeSZrMVvBDLKpDeqnHRNBybCajP4yTogfQHCYT2w"
+			]
+		},
+		"bonddepo/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,113 @@
+{
+	"compiler": {
+		"version": "0.8.14+commit.80d49f37"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "getPendingETHGain",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "getPendingLUSDGain",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_LQTYamount",
+						"type": "uint256"
+					}
+				],
+				"name": "stake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_LQTYamount",
+						"type": "uint256"
+					}
+				],
+				"name": "unstake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"unstake(uint256)": {
+					"notice": "reduces the caller’s stake by _LQTYamount, up to a maximum of their entire stake.  It pays out their accumulated ETH and LUSD gains from staking."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"LUSDAllocator/LiquityInterfaces.sol": "ILQTYStaking"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"LUSDAllocator/LiquityInterfaces.sol": {
+			"keccak256": "0x5506e0fb593d9f5d68a95203b381d77c14c12a77177a47887d26b26a455cdbd2",
+			"urls": [
+				"bzz-raw://75f413c898c957c2a2a6ee88568903ab327c68b47f55e00e0572771a0eeb3d48",
+				"dweb:/ipfs/QmdRVUaN5E4V7SBMvBTZPkYSGBBNKB15kQSZ4k8awuVDm4"
+			]
+		}
+	},
+	"version": 1
+}

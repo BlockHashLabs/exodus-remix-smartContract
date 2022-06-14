@@ -1,0 +1,720 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_oldEXO",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_oldsEXO",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_oldTreasury",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_oldStaking",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_oldwsEXO",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_sushi",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_uni",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_timelock",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_authority",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "contract IExodusAuthority",
+						"name": "authority",
+						"type": "address"
+					}
+				],
+				"name": "AuthorityUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Defunded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Funded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "staking",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "treasury",
+						"type": "address"
+					}
+				],
+				"name": "Migrated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "block",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "end",
+						"type": "uint256"
+					}
+				],
+				"name": "TimelockStarted",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "authority",
+				"outputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum ExodusTokenMigrator.TYPE",
+						"name": "_to",
+						"type": "uint8"
+					}
+				],
+				"name": "bridgeBack",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "reserve",
+						"type": "address"
+					}
+				],
+				"name": "defund",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "exoMigrated",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "gEXO",
+				"outputs": [
+					{
+						"internalType": "contract IgEXO",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "halt",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum ExodusTokenMigrator.TYPE",
+						"name": "_from",
+						"type": "uint8"
+					},
+					{
+						"internalType": "enum ExodusTokenMigrator.TYPE",
+						"name": "_to",
+						"type": "uint8"
+					}
+				],
+				"name": "migrate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "enum ExodusTokenMigrator.TYPE",
+						"name": "_to",
+						"type": "uint8"
+					}
+				],
+				"name": "migrateAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newTreasury",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_newStaking",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_newEXO",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_newsEXO",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_reserve",
+						"type": "address"
+					}
+				],
+				"name": "migrateContracts",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "pair",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "sushi",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_minA",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_minB",
+						"type": "uint256"
+					}
+				],
+				"name": "migrateLP",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "migrateToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "newEXO",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "newStaking",
+				"outputs": [
+					{
+						"internalType": "contract IStaking",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "newTreasury",
+				"outputs": [
+					{
+						"internalType": "contract ITreasury",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oldEXO",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oldStaking",
+				"outputs": [
+					{
+						"internalType": "contract IStakingV1",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oldSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oldTreasury",
+				"outputs": [
+					{
+						"internalType": "contract ITreasuryV1",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oldsEXO",
+				"outputs": [
+					{
+						"internalType": "contract IsEXO",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oldwsEXO",
+				"outputs": [
+					{
+						"internalType": "contract IwsEXO",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "_newAuthority",
+						"type": "address"
+					}
+				],
+				"name": "setAuthority",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gEXO",
+						"type": "address"
+					}
+				],
+				"name": "setgOHM",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "shutdown",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startTimelock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sushiRouter",
+				"outputs": [
+					{
+						"internalType": "contract IUniswapV2Router",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timelockEnd",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timelockLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "uniRouter",
+				"outputs": [
+					{
+						"internalType": "contract IUniswapV2Router",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					}
+				],
+				"name": "withdrawToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"migrateLP(address,bool,address,uint256,uint256)": {
+					"notice": "Migrate LP and pair with new OHM"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusTokenMigrator/OlympusTokenMigrator.sol": "ExodusTokenMigrator"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusTokenMigrator/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		},
+		"ExodusTokenMigrator/IOlympusAuthority.sol": {
+			"keccak256": "0x81a1f77da7ddb3bf1defad03673098cc8d01fbb1ea29d9ef4968b205746f041c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://2ae99a51e64ed363058e8b18c33b1f498f84d3588f71c442e427fc0021a79a04",
+				"dweb:/ipfs/QmTkMMtvLKnhqEtRWCimY2r3oY5B8FpHqmG5fuhbLQKRJg"
+			]
+		},
+		"ExodusTokenMigrator/IOwnable.sol": {
+			"keccak256": "0x29d92f94f4517d948d3a314e89008ae96e189cc21d410d477ddfe3766e5d665a",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://939c2fa81ad0f94c4c76754676f1db4340f1f1cba50cd20dbbb5a71be8945f65",
+				"dweb:/ipfs/QmQzo16egRWr1BGdPh9AML4G2q1qG57vK4ChMcddDbm1r5"
+			]
+		},
+		"ExodusTokenMigrator/IStaking.sol": {
+			"keccak256": "0xc5481248b924479a867d252882a1be9573e4aefe3c7816045e1c0c25daacca70",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://5a0bf214509dcb8f0f9566918c2038e50e5bd9286a19a914f1ed6fbf2de22b1d",
+				"dweb:/ipfs/QmTacgzN9NcR1oHwyWdFV8Kazfzoj8dCaNLVVftt35KnNU"
+			]
+		},
+		"ExodusTokenMigrator/IStakingV1.sol": {
+			"keccak256": "0x5b020cff8561f6f3a78db4c107412c43954d457c96483c7ca89a6c2ea82ee15b",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://f5d8732aa5f7d194a037042afe7b123b84b7fee0e4c8e87ff630c8e778199623",
+				"dweb:/ipfs/Qmcipb9tXnqTCmTVbsF4MXdM6EaAbw7uzypQoqsTCPRJ8S"
+			]
+		},
+		"ExodusTokenMigrator/ITreasury.sol": {
+			"keccak256": "0x3a7e171916da6bf9b28904c2adc6ede32896a841e7f7ede0ad60da6804659c56",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://591b853c1ba8b666992cabc4279b1d9bfc32e79c618b14e42026bc4ab5a8b9f3",
+				"dweb:/ipfs/QmNMn45JaWKZvMg6Fk8JTuCTVJRcAozFmEAGmLHKr7cZ1b"
+			]
+		},
+		"ExodusTokenMigrator/ITreasuryV1.sol": {
+			"keccak256": "0xa11470f36c1a411585fbfe0fa72e65f56c409ff2de35029b12fc1cb90f36c519",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://d10648fa606e8bf8d529616057f2c6a5795f21675638c2a787dd24f8ae695203",
+				"dweb:/ipfs/QmY2fmPYRer3xxxXYTqyCcyrRE2kfdpURWrybQygWmHFmJ"
+			]
+		},
+		"ExodusTokenMigrator/IUniswapV2Router.sol": {
+			"keccak256": "0x218b3b0a80506699aaf76acf6185292c0b2dac2a6ad770944dd936684d131e29",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://54375bc2e94a750297b42529e696cefe5efaee10e68972fd0e4af28d82cc9493",
+				"dweb:/ipfs/QmUwntXfkPDKgU1hqmaVUFGmrbmzg5rD6YL9tvAhSKM4jF"
+			]
+		},
+		"ExodusTokenMigrator/IgOHM.sol": {
+			"keccak256": "0x6cac4e5000a7bf84a9fb175f38a3a85fdedf2401cca7c0f0d95e9f88c8929e0d",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e313687e3a347191cbb05812b8bf6832ee47019912f066d3e5c68a7b9fc8ea3f",
+				"dweb:/ipfs/QmX2si86fKKkP96jmWCc3D2qbLUiT5mN9mw5nL68CUcHwW"
+			]
+		},
+		"ExodusTokenMigrator/IsOHM.sol": {
+			"keccak256": "0xe6853333a2d813d8ff0afce244cb92d4e1742a26ae2955d1d2cca221bfd4e675",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://9a3dd7d8b7d6421a74b3794e80174f7ee486c1391013c7a557859f75e30229d2",
+				"dweb:/ipfs/QmeyMJhtEkL85vGk1e9BRd2AXmfq6Kivm4nTi1NeDTkoDr"
+			]
+		},
+		"ExodusTokenMigrator/IwsOHM.sol": {
+			"keccak256": "0x10d8a93d07202a35598c45e1749f87ba7d539c5b02241ef7fcc3b76429f82639",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fbdf048c5a86e5df56cda102c9c60d9db57028e409e821d69a2af440f8402b4e",
+				"dweb:/ipfs/QmTg2dEY7q8gi5GL8xWz8SqMQxZQRUDWYjy2HHTM5XwRDg"
+			]
+		},
+		"ExodusTokenMigrator/OlympusAccessControlled.sol": {
+			"keccak256": "0xe08e1633d46748f33f8e4bab7cc743f5f427174aa54ad4b9066e8106aad66b69",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://01010d4ba59a88af6b3dd2fe46d06ce141effdf0421dfaa8dc91b8d3cc895654",
+				"dweb:/ipfs/QmaPzow7X4CNeCNUd2vgwDpbnqvHxCnQV3L2kfAFu56qAX"
+			]
+		},
+		"ExodusTokenMigrator/OlympusTokenMigrator.sol": {
+			"keccak256": "0xa27a7672974bddd98c2096600fe7291ad74566bb26df1cd6b99664916037a3d7",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://428ee48e7807be16ec96943e2436965b3428d5ae460cd7ed63f5dbfad5aeeeef",
+				"dweb:/ipfs/QmW6NohbKYLL996CMuNicAHM32nAE8m2vKp2MwH8cwwTnB"
+			]
+		},
+		"ExodusTokenMigrator/SafeERC20.sol": {
+			"keccak256": "0x873d82e1f38006c425bcb544d8cca59114ca252f64457e2cc3376ef9a68f2c8e",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://de509f28376467145aff3d45a974708c22838fb21c13f036a79d55d7b389078b",
+				"dweb:/ipfs/QmTVAVLp2cgCV3MHnFv1YJbH4eYW4xtayLvpmZR5t8CGYc"
+			]
+		},
+		"ExodusTokenMigrator/SafeMath.sol": {
+			"keccak256": "0xf2edfc9cacbecb4aa48c6e5752a2d87939b450b64c18e77ad1098430d0772005",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e6a53bcf01804ba55befe28b960f5fb83d677b408a6923181987259cbd0257d9",
+				"dweb:/ipfs/QmQFd3E8cQGcHLN8uaX9cQcVsrgEikNEHCGee1iXJ1BXfd"
+			]
+		}
+	},
+	"version": 1
+}

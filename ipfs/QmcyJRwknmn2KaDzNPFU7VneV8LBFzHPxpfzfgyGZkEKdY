@@ -1,0 +1,426 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_treasury",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_exo",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_staking",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_authority",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "contract IExodusAuthority",
+						"name": "authority",
+						"type": "address"
+					}
+				],
+				"name": "AuthorityUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rewardRate",
+						"type": "uint256"
+					}
+				],
+				"name": "addRecipient",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "adjustments",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "add",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "target",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "authority",
+				"outputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "bounty",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "distribute",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "info",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_rate",
+						"type": "uint256"
+					}
+				],
+				"name": "nextRewardAt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					}
+				],
+				"name": "nextRewardFor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "removeRecipient",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "retrieveBounty",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_add",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_target",
+						"type": "uint256"
+					}
+				],
+				"name": "setAdjustment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "_newAuthority",
+						"type": "address"
+					}
+				],
+				"name": "setAuthority",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bounty",
+						"type": "uint256"
+					}
+				],
+				"name": "setBounty",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"addRecipient(address,uint256)": {
+					"params": {
+						"_recipient": "address",
+						"_rewardRate": "uint"
+					}
+				},
+				"nextRewardAt(uint256)": {
+					"params": {
+						"_rate": "uint"
+					},
+					"returns": {
+						"_0": "uint"
+					}
+				},
+				"nextRewardFor(address)": {
+					"params": {
+						"_recipient": "address"
+					},
+					"returns": {
+						"_0": "uint"
+					}
+				},
+				"removeRecipient(uint256)": {
+					"params": {
+						"_index": "uint"
+					}
+				},
+				"setAdjustment(uint256,bool,uint256,uint256)": {
+					"params": {
+						"_add": "bool",
+						"_index": "uint",
+						"_rate": "uint",
+						"_target": "uint"
+					}
+				},
+				"setBounty(uint256)": {
+					"params": {
+						"_bounty": "uint256"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addRecipient(address,uint256)": {
+					"notice": "adds recipient for distributions"
+				},
+				"distribute()": {
+					"notice": "send epoch reward to staking contract"
+				},
+				"nextRewardAt(uint256)": {
+					"notice": "view function for next reward at given rate"
+				},
+				"nextRewardFor(address)": {
+					"notice": "view function for next reward for specified address"
+				},
+				"removeRecipient(uint256)": {
+					"notice": "removes recipient for distributions"
+				},
+				"setAdjustment(uint256,bool,uint256,uint256)": {
+					"notice": "set adjustment info for a collector's reward rate"
+				},
+				"setBounty(uint256)": {
+					"notice": "set bounty to incentivize keepers"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Distributor/StakingDistributor.sol": "Distributor"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Distributor/IDistributor.sol": {
+			"keccak256": "0xd6fc7153d8030366c99d408843ea948ba7b79c269f809ddbd31b78d7d71751c8",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e4dd2044e7e3c93eed1b90abae9ed98b11bbf5a3b6503b50d5a902b3431bbdd2",
+				"dweb:/ipfs/Qma56BMxif1AFH7ZpcGALFwYWNyiD9X43yezcFtE6Quj3V"
+			]
+		},
+		"Distributor/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		},
+		"Distributor/IOlympusAuthority.sol": {
+			"keccak256": "0x81a1f77da7ddb3bf1defad03673098cc8d01fbb1ea29d9ef4968b205746f041c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://2ae99a51e64ed363058e8b18c33b1f498f84d3588f71c442e427fc0021a79a04",
+				"dweb:/ipfs/QmTkMMtvLKnhqEtRWCimY2r3oY5B8FpHqmG5fuhbLQKRJg"
+			]
+		},
+		"Distributor/ITreasury.sol": {
+			"keccak256": "0x3a7e171916da6bf9b28904c2adc6ede32896a841e7f7ede0ad60da6804659c56",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://591b853c1ba8b666992cabc4279b1d9bfc32e79c618b14e42026bc4ab5a8b9f3",
+				"dweb:/ipfs/QmNMn45JaWKZvMg6Fk8JTuCTVJRcAozFmEAGmLHKr7cZ1b"
+			]
+		},
+		"Distributor/OlympusAccessControlled.sol": {
+			"keccak256": "0xe08e1633d46748f33f8e4bab7cc743f5f427174aa54ad4b9066e8106aad66b69",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://01010d4ba59a88af6b3dd2fe46d06ce141effdf0421dfaa8dc91b8d3cc895654",
+				"dweb:/ipfs/QmaPzow7X4CNeCNUd2vgwDpbnqvHxCnQV3L2kfAFu56qAX"
+			]
+		},
+		"Distributor/SafeERC20.sol": {
+			"keccak256": "0x873d82e1f38006c425bcb544d8cca59114ca252f64457e2cc3376ef9a68f2c8e",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://de509f28376467145aff3d45a974708c22838fb21c13f036a79d55d7b389078b",
+				"dweb:/ipfs/QmTVAVLp2cgCV3MHnFv1YJbH4eYW4xtayLvpmZR5t8CGYc"
+			]
+		},
+		"Distributor/SafeMath.sol": {
+			"keccak256": "0xf2edfc9cacbecb4aa48c6e5752a2d87939b450b64c18e77ad1098430d0772005",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e6a53bcf01804ba55befe28b960f5fb83d677b408a6923181987259cbd0257d9",
+				"dweb:/ipfs/QmQFd3E8cQGcHLN8uaX9cQcVsrgEikNEHCGee1iXJ1BXfd"
+			]
+		},
+		"Distributor/StakingDistributor.sol": {
+			"keccak256": "0x4500755b450fff6a61ceea08201e69e88ae0e03e7b23d75ed74fbcecd67e3c12",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://4d96af4ad95a9cd4e4070a625b4aea228b95761d066b15648614d2755fb6646f",
+				"dweb:/ipfs/Qmek5FEPvmcsynKDtiY4g2BLgyBkceZBnJXxaUpSAriRA6"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusBondingCalculator/Address.sol": "Address"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusBondingCalculator/Address.sol": {
+			"keccak256": "0xc2d8595504a985f53a5db9e6220ae614a7f8b4c5c1d35f55b07e08a21e40b2b9",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1b8104a932321f4f8a89ca5265b7bca5fe9f5e51ccec01470931e5014be87fc9",
+				"dweb:/ipfs/Qmb2ta7fADrRuXqjot4reKg63brweMH6jWocx534huYtCc"
+			]
+		}
+	},
+	"version": 1
+}

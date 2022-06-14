@@ -1,0 +1,521 @@
+{
+	"compiler": {
+		"version": "0.8.14+commit.80d49f37"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "contract IExodusAuthority",
+						"name": "authority",
+						"type": "address"
+					}
+				],
+				"name": "AuthorityUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "authority",
+				"outputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "daoReward",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getReward",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "indexesFor",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "notes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "payout",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint48",
+						"name": "created",
+						"type": "uint48"
+					},
+					{
+						"internalType": "uint48",
+						"name": "matured",
+						"type": "uint48"
+					},
+					{
+						"internalType": "uint48",
+						"name": "redeemed",
+						"type": "uint48"
+					},
+					{
+						"internalType": "uint48",
+						"name": "marketID",
+						"type": "uint48"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "pendingFor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "payout_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "matured_",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "pullNote",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "newIndex_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "pushNote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_indexes",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "bool",
+						"name": "_sendgOHM",
+						"type": "bool"
+					}
+				],
+				"name": "redeem",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "payout_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "_sendgOHM",
+						"type": "bool"
+					}
+				],
+				"name": "redeemAll",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "refReward",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "rewards",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IExodusAuthority",
+						"name": "_newAuthority",
+						"type": "address"
+					}
+				],
+				"name": "setAuthority",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_toFrontEnd",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_toDAO",
+						"type": "uint256"
+					}
+				],
+				"name": "setRewards",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "updateTreasury",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_operator",
+						"type": "address"
+					}
+				],
+				"name": "whitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "whitelisted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"indexesFor(address)": {
+					"params": {
+						"_user": "the user to query notes for"
+					},
+					"returns": {
+						"_0": "the pending notes for the user"
+					}
+				},
+				"pendingFor(address,uint256)": {
+					"params": {
+						"_index": "the index of the note in the user's array",
+						"_user": "the user that the note belongs to"
+					},
+					"returns": {
+						"matured_": "   if the payout can be redeemed",
+						"payout_": "    the payout due, in gOHM"
+					}
+				},
+				"pullNote(address,uint256)": {
+					"params": {
+						"_from": "the address that approved the note transfer",
+						"_index": "the index of the note to transfer (in the sender's array)"
+					}
+				},
+				"pushNote(address,uint256)": {
+					"params": {
+						"_index": "index of note to approve transfer for",
+						"_to": "address to approve note transfer for"
+					}
+				},
+				"redeem(address,uint256[],bool)": {
+					"params": {
+						"_indexes": "the note indexes to redeem",
+						"_sendgOHM": "send payout as gOHM or sOHM",
+						"_user": "the user to redeem for"
+					},
+					"returns": {
+						"payout_": "    sum of payout sent, in gOHM"
+					}
+				},
+				"redeemAll(address,bool)": {
+					"details": "if possible, query indexesFor() off-chain and input in redeem() to save gas",
+					"params": {
+						"_sendgOHM": "send payout as gOHM or sOHM",
+						"_user": "user to redeem all notes for"
+					},
+					"returns": {
+						"_0": "sum of payout sent, in gOHM"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"indexesFor(address)": {
+					"notice": "all pending notes for user"
+				},
+				"pendingFor(address,uint256)": {
+					"notice": "calculate amount available for claim for a single note"
+				},
+				"pullNote(address,uint256)": {
+					"notice": "transfer a note that has been approved by an address"
+				},
+				"pushNote(address,uint256)": {
+					"notice": "approve an address to transfer a note"
+				},
+				"redeem(address,uint256[],bool)": {
+					"notice": "redeem notes for user"
+				},
+				"redeemAll(address,bool)": {
+					"notice": "redeem all redeemable markets for user"
+				},
+				"setRewards(uint256,uint256)": {
+					"notice": "set rewards for front end operators and DAO"
+				},
+				"whitelist(address)": {
+					"notice": "add or remove addresses from the reward whitelist"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusBonding/NoteKeeper.sol": "NoteKeeper"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusBonding/FrontEndRewarder.sol": {
+			"keccak256": "0xbd6d482ee114bce60a81f944596585d7c824453157b472edcb543931a2a66aa7",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://638c68cf956df4e65881309109a2b1be94e9732c130b21e5ac4a96e72a96e729",
+				"dweb:/ipfs/QmcULfgvDVH6ULLcdDsX77gLeTPf4wQu8peXYwubWM8dur"
+			]
+		},
+		"ExodusBonding/IERC20.sol": {
+			"keccak256": "0xc379ec1f3a741cc00948003e24687516b8fdb71914cd3b90b10589d74fe1d49f",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://fdb71c90b122d9421c799a6b89d8f2c1aba66be1ce2b51d57ba8effb89d73a9c",
+				"dweb:/ipfs/QmboLxPYNXFfF7Bc3vprbp9a7UFqC5EaU2ARK7oFZYCBYB"
+			]
+		},
+		"ExodusBonding/INoteKeeper.sol": {
+			"keccak256": "0x6efb864b693abe1c35670ce2a67f592551f54cc4dfb3cd56eb65e561db7ca709",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://bbf5ffe2816f00036114feec939cc5eb1d213bd5f702d063bb2f1e495a7dbd51",
+				"dweb:/ipfs/QmczwvKVScV2fLktadj8jobfyYUREjnPqPibz9MKVSqsKi"
+			]
+		},
+		"ExodusBonding/IOlympusAuthority.sol": {
+			"keccak256": "0x81a1f77da7ddb3bf1defad03673098cc8d01fbb1ea29d9ef4968b205746f041c",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://2ae99a51e64ed363058e8b18c33b1f498f84d3588f71c442e427fc0021a79a04",
+				"dweb:/ipfs/QmTkMMtvLKnhqEtRWCimY2r3oY5B8FpHqmG5fuhbLQKRJg"
+			]
+		},
+		"ExodusBonding/IStaking.sol": {
+			"keccak256": "0xc5481248b924479a867d252882a1be9573e4aefe3c7816045e1c0c25daacca70",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://5a0bf214509dcb8f0f9566918c2038e50e5bd9286a19a914f1ed6fbf2de22b1d",
+				"dweb:/ipfs/QmTacgzN9NcR1oHwyWdFV8Kazfzoj8dCaNLVVftt35KnNU"
+			]
+		},
+		"ExodusBonding/ITreasury.sol": {
+			"keccak256": "0x3a7e171916da6bf9b28904c2adc6ede32896a841e7f7ede0ad60da6804659c56",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://591b853c1ba8b666992cabc4279b1d9bfc32e79c618b14e42026bc4ab5a8b9f3",
+				"dweb:/ipfs/QmNMn45JaWKZvMg6Fk8JTuCTVJRcAozFmEAGmLHKr7cZ1b"
+			]
+		},
+		"ExodusBonding/IgOHM.sol": {
+			"keccak256": "0x6cac4e5000a7bf84a9fb175f38a3a85fdedf2401cca7c0f0d95e9f88c8929e0d",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e313687e3a347191cbb05812b8bf6832ee47019912f066d3e5c68a7b9fc8ea3f",
+				"dweb:/ipfs/QmX2si86fKKkP96jmWCc3D2qbLUiT5mN9mw5nL68CUcHwW"
+			]
+		},
+		"ExodusBonding/NoteKeeper.sol": {
+			"keccak256": "0xa04c40c09f13e4c24b5eed8381151a66df81998c710ebe472810a3612f3c031d",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://453495a94903f2fe7bb2a59143d724bed424bc14d7b466a4a1a907842e4b0e1f",
+				"dweb:/ipfs/QmNSb7N1TbxgDvmDUBZPNrq6TrFHrVtYyDqba6B1in58hd"
+			]
+		},
+		"ExodusBonding/OlympusAccessControlled.sol": {
+			"keccak256": "0xe08e1633d46748f33f8e4bab7cc743f5f427174aa54ad4b9066e8106aad66b69",
+			"license": "AGPL-3.0-only",
+			"urls": [
+				"bzz-raw://01010d4ba59a88af6b3dd2fe46d06ce141effdf0421dfaa8dc91b8d3cc895654",
+				"dweb:/ipfs/QmaPzow7X4CNeCNUd2vgwDpbnqvHxCnQV3L2kfAFu56qAX"
+			]
+		}
+	},
+	"version": 1
+}

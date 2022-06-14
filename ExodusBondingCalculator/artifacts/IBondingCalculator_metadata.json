@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_LP",
+						"type": "address"
+					}
+				],
+				"name": "markdown",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "pair_",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount_",
+						"type": "uint256"
+					}
+				],
+				"name": "valuation",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusBondingCalculator/IBondingCalculator.sol": "IBondingCalculator"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusBondingCalculator/IBondingCalculator.sol": {
+			"keccak256": "0x5176ee1c1f51e3dfa75d298783c4927b5c5ff2ffb5b6e3bb99bdbf7664501461",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1781ec88e9fa7df2ab07992c23416217e5a8580155016fc1daee7acdb1727ecf",
+				"dweb:/ipfs/QmeFpk4uAuJLTtYYDXGwC8b4mmpv3JxCqrBAZrToztoEgx"
+			]
+		}
+	},
+	"version": 1
+}

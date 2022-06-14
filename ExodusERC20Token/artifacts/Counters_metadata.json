@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusERC20Token/Counters.sol": "Counters"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusERC20Token/Counters.sol": {
+			"keccak256": "0x2723e1522fb9088bb9ee8d3f20e9f3b04bc38daf127ef1dc624e61a88cbf48de",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://b52e187f74d2be83d893b2b47f866878504b14ba04834cb5e3d06219c5ab5673",
+				"dweb:/ipfs/QmcYVMhAunHXNU55TGZGkSKATbDCNTgs42u4q5At8NN4Ce"
+			]
+		},
+		"ExodusERC20Token/SafeMath.sol": {
+			"keccak256": "0xf2edfc9cacbecb4aa48c6e5752a2d87939b450b64c18e77ad1098430d0772005",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://e6a53bcf01804ba55befe28b960f5fb83d677b408a6923181987259cbd0257d9",
+				"dweb:/ipfs/QmQFd3E8cQGcHLN8uaX9cQcVsrgEikNEHCGee1iXJ1BXfd"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusBondingCalculator/FixedPoint.sol": "Babylonian"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusBondingCalculator/FixedPoint.sol": {
+			"keccak256": "0xd0cfb115e614660af05269fa70be389fbe6c7f69e33fd34da466c0471ce95387",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://1a46ca090d1cb7263e141d2c5cde7bc6e13584cf51866373c9e054549c06595a",
+				"dweb:/ipfs/QmcKLxhFkSR3WmvJsYbeamCU12hkM84dgrCJKJtYazZPBk"
+			]
+		},
+		"ExodusBondingCalculator/FullMath.sol": {
+			"keccak256": "0x4fce1c6e69dcd9e555dcacea6d1fa8966f0fbb3488730c30d51ef7e81490c2dc",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://c4d14ecfacac1b39423c4a4ec1ed7f72179312ee07323c7cdade3614336aba29",
+				"dweb:/ipfs/Qmf81MpDird8N7BSSnXhdVrut7mrMjJAMuKQ3FQy9Zoyqw"
+			]
+		}
+	},
+	"version": 1
+}

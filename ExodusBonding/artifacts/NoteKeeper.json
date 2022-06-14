@@ -1,0 +1,408 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"görli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"authority()": "bf7e214f",
+			"daoReward()": "1885f580",
+			"getReward()": "3d18b912",
+			"indexesFor(address)": "e481b265",
+			"notes(address,uint256)": "e0b117ff",
+			"pendingFor(address,uint256)": "c3e0fb1c",
+			"pullNote(address,uint256)": "a4220610",
+			"pushNote(address,uint256)": "d6db4df8",
+			"redeem(address,uint256[],bool)": "d62fbdd3",
+			"redeemAll(address,bool)": "46aed74e",
+			"refReward()": "f3191a46",
+			"rewards(address)": "0700037d",
+			"setAuthority(address)": "7a9e5e4b",
+			"setRewards(uint256,uint256)": "654e51e7",
+			"updateTreasury()": "9c769787",
+			"whitelist(address)": "9b19251a",
+			"whitelisted(address)": "d936547e"
+		}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "contract IExodusAuthority",
+					"name": "authority",
+					"type": "address"
+				}
+			],
+			"name": "AuthorityUpdated",
+			"type": "event"
+		},
+		{
+			"inputs": [],
+			"name": "authority",
+			"outputs": [
+				{
+					"internalType": "contract IExodusAuthority",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "daoReward",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getReward",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				}
+			],
+			"name": "indexesFor",
+			"outputs": [
+				{
+					"internalType": "uint256[]",
+					"name": "",
+					"type": "uint256[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"name": "notes",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "payout",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint48",
+					"name": "created",
+					"type": "uint48"
+				},
+				{
+					"internalType": "uint48",
+					"name": "matured",
+					"type": "uint48"
+				},
+				{
+					"internalType": "uint48",
+					"name": "redeemed",
+					"type": "uint48"
+				},
+				{
+					"internalType": "uint48",
+					"name": "marketID",
+					"type": "uint48"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_index",
+					"type": "uint256"
+				}
+			],
+			"name": "pendingFor",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "payout_",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bool",
+					"name": "matured_",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_from",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_index",
+					"type": "uint256"
+				}
+			],
+			"name": "pullNote",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "newIndex_",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_to",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_index",
+					"type": "uint256"
+				}
+			],
+			"name": "pushNote",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256[]",
+					"name": "_indexes",
+					"type": "uint256[]"
+				},
+				{
+					"internalType": "bool",
+					"name": "_sendgOHM",
+					"type": "bool"
+				}
+			],
+			"name": "redeem",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "payout_",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"internalType": "bool",
+					"name": "_sendgOHM",
+					"type": "bool"
+				}
+			],
+			"name": "redeemAll",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "refReward",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"name": "rewards",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "contract IExodusAuthority",
+					"name": "_newAuthority",
+					"type": "address"
+				}
+			],
+			"name": "setAuthority",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_toFrontEnd",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_toDAO",
+					"type": "uint256"
+				}
+			],
+			"name": "setRewards",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "updateTreasury",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_operator",
+					"type": "address"
+				}
+			],
+			"name": "whitelist",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"name": "whitelisted",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	]
+}

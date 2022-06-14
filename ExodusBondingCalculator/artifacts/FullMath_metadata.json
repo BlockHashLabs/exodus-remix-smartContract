@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.7.5+commit.eb77ed08"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ExodusBondingCalculator/FullMath.sol": "FullMath"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ExodusBondingCalculator/FullMath.sol": {
+			"keccak256": "0x4fce1c6e69dcd9e555dcacea6d1fa8966f0fbb3488730c30d51ef7e81490c2dc",
+			"license": "AGPL-3.0",
+			"urls": [
+				"bzz-raw://c4d14ecfacac1b39423c4a4ec1ed7f72179312ee07323c7cdade3614336aba29",
+				"dweb:/ipfs/Qmf81MpDird8N7BSSnXhdVrut7mrMjJAMuKQ3FQy9Zoyqw"
+			]
+		}
+	},
+	"version": 1
+}
